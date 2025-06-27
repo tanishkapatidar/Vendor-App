@@ -3,7 +3,7 @@ import React ,{useEffect,useState} from "react";
 import axios  from "axios";
 import './VendorList.css';
 
-const BE_URL = import.meta.env.BE_URL;
+const BE_URL = "https://vendor-app-be.onrender.com"
 
 const VendorList =({setSelectedVendor}) => {
     const [vendors, setVendors] = useState([]);
