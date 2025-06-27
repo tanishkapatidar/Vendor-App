@@ -3,13 +3,14 @@ import React ,{useEffect,useState} from "react";
 import axios  from "axios";
 import './VendorList.css';
 
+const BE_URL = import.meta.env.BE_URL;
 
 const VendorList =({setSelectedVendor}) => {
     const [vendors, setVendors] = useState([]);
     const [page, setPage]= useState(1);
 
     const fetchVendors = async () => {
-        const res = await axios.get(`http://localhost:5000/api/vendors?page=${page}&limit=5`);
+        const res = await axios.get(`${BE_URL}/api/vendors?page=${page}&limit=5`);
         setVendors(res.data.vendors);
 
     };
@@ -20,7 +21,7 @@ const VendorList =({setSelectedVendor}) => {
 
     const deleteVendor = async (id) => {
         if( window.confirm('Delete this vendor?')) {
-            await axios.delete(`http://localhost:5000/api/vendors/${id}`);
+            await axios.delete(`${BE_URL}/api/vendors/${id}`);
             fetchVendors();
         }
     };
