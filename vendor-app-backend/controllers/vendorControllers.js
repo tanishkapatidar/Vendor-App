@@ -1,21 +1,23 @@
 
-const { PrismaClient } = require('@prisma/client');
+const{PrismaClient}= require('@prisma/client');
 const prisma = new PrismaClient();
 
-exports.createVendors = async (req , res) => {
+async function createVendor(req , res) {
     try {
         const data = req.body;
+        console.log("Received vendor data:", data);
         const vendor = await prisma.vendor.create({data});
         res.json(vendor);
     
     } catch (error) {
+        console.error("Error in createVendor:", error);
         res.status(500).json({error: error.message});
 
     } 
 
 };
 
-exports.getVendors = async (req, res) => {
+async function getVendors(req, res) {
     const page = parseInt(req.query.page) ||1;
     const limit = parseInt(req.query.limit) || 5 ;
     const skip = (page-1)* limit;
@@ -28,7 +30,7 @@ exports.getVendors = async (req, res) => {
     res.json({vendors,total});
 };
 
-exports.updateVendor = async (req,res) => {
+async function updateVendor(req,res) {
     const{id}= req.params;
     const data = req.body;
     try{
@@ -39,11 +41,11 @@ exports.updateVendor = async (req,res) => {
         });
         res.json(vendor);
     } catch (error) {
-        res.atatus(500).json({error:error.message});
+        res.status(500).json({error:error.message});
     }
 };
 
-exports.deleteVendors = async (req,res) => {
+async function deleteVendor(req,res) {
     
     const{id} = req.params;
     try{
@@ -56,3 +58,11 @@ exports.deleteVendors = async (req,res) => {
         res.status(500).json({error:error.message});
     }
 };
+
+module.exports = {
+    createVendor,
+    getVendors,
+    updateVendor,
+    deleteVendor
+  };
+  
