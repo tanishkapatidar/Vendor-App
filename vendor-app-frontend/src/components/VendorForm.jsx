@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import './VendorForm.css';
 
+const BE_URL = import.meta.env.BE_URL;
+
 const VenderForm =({selectedVendor,clearSelectedVendor}) => {
     const initialForm ={
         name:'',
@@ -32,14 +34,13 @@ const VenderForm =({selectedVendor,clearSelectedVendor}) => {
         e.preventDefault();
         console.log('Submitting vendor:', vendor);
         try{
-            if(vendor.id){
-                await axios.put(`http://localhost:5000/api/vendors/${vendor.id}`,vendor);
+            if (vendor.id) {
+                await axios.put(`${BE_URL}/api/vendors/${vendor.id}`, vendor);
                 alert('Vendor Updated');
-            }
-            else{
-            await axios.post('http://localhost:5000/api/vendors',vendor);
-            alert('Vendor Created');
-            }
+              } else {
+                await axios.post(`${BE_URL}/api/vendors`, vendor);
+                alert('Vendor Created');
+              }
             setVendor(initialForm);
             clearSelectedVendor();
             // window.location.reload();
