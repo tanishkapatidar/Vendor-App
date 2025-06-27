@@ -1,0 +1,21 @@
+.login-wrapper {
+background-color: #f8fafc;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.login-box {
+background: white;
+padding: 40px;
+border-radius: 10px;
+box-shadow: 0 0 20px rgba(0,0,0,0.05);
+text-align: center;
+}
+
+.login-box h2 {
+margin-bottom: 20px;
+font-size: 24px;
+color: #1f2937;
+}

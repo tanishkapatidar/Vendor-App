@@ -1,5 +1,7 @@
 
 import React from 'react'
+import './Login.css';
+
 
 const Login = () => {
 
@@ -11,10 +13,13 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign:'center', marginTop:'20%'}}>
-            <h2>Login with Google</h2>
-            <button onClick = {handleLogin}>Login</button>
+        <div className="login-wrapper">
+            <div className="login-box">
+                <h2>Login with Google</h2>
+                <button onClick={handleLogin}>Login</button>
+            </div>
         </div>
+
     );
 };
 

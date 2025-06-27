@@ -1,6 +1,8 @@
 
 import React ,{useEffect,useState} from "react";
 import axios  from "axios";
+import './VendorList.css';
+
 
 const VendorList =() => {
     const [vendors, setVendors] = useState([]);
@@ -24,8 +26,8 @@ const VendorList =() => {
     };
 
     return (
-        <div>
-            <h3>Vendor List</h3>
+        <div className="vendor-list">
+            <h3>Vendors</h3>
             <table border='1'>
                 <thead>
                     <tr>
@@ -39,17 +41,22 @@ const VendorList =() => {
                             <td>{v.bankAccountNo}</td>
                             <td>{bankName}</td>
                             <td>
-                                <button onClick={() => deleteVendor(v,id)}>Delete</button>
+                                <button className="action-btn delete-btn"onClick={() => deleteVendor(v,id)}>Delete</button>
+                            </td>
+                            <td>
+                            <button className="action-btn edit-btn" onClick={() => setSelectedVendor(v)}>Edit</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
-            <div style={{marginTop:'1rem'}}>
-                <button disabled ={ page <= 1} onClick={()=> setPage(p => p-1)}>Prev</button>
-
+            <div className="pagination">
+                <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}>Prev</button>
+                <span> Page {page} </span>
+                <button onClick={() => setPage(p => p + 1)}>Next</button>
             </div>
+
         </div>
     );
 };

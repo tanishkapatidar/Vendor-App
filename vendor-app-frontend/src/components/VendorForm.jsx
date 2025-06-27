@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import './VendorForm.css';
 
 const VenderForm =({selectedVendor,clearSelectedVendor}) => {
     const initialForm ={
@@ -47,7 +48,7 @@ const VenderForm =({selectedVendor,clearSelectedVendor}) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
             <h3>{vendor.id ? "Edit Vendor": "Create Vendor"}</h3>
             <input name="name" required placeholder="Vendor Name*" value={vendor.name} onChange={handleChange}  /><br />
             <input name="bankAccountNo" required placeholder="Bank Account No*" value={vendor.bankAccountNo} onChange={handleChange} /><br />
@@ -57,16 +58,16 @@ const VenderForm =({selectedVendor,clearSelectedVendor}) => {
             <input name="city" required placeholder="City" value={vendor.city} onChange={handleChange} /><br />
             <input name="country" required placeholder="Country" value={vendor.country} onChange={handleChange} /><br />
             <input name="zipCode" required placeholder="Zip Code" value={vendor.zipCode} onChange={handleChange} /><br />
-            <button type="submit"> {vendor.id ? "Update Vendor":"Create Vendor"}</button>
-            {
-                vendor.id &&  (
+            <div className="form-buttons">
+                <button type="submit">{vendor.id ? "Update Vendor" : "Create Vendor"}</button>
+                {vendor.id && (
                     <button type="button" onClick={() => {
-                        setVendor(initialForm);
-                        clearSelectedVendor();
-
+                    setVendor(initialForm);
+                    clearSelectedVendor();
                     }}>Cancel</button>
-                    )}
-                
+                )}
+                </div>
+
         </form>
     );
 };
