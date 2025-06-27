@@ -39,9 +39,9 @@ const VendorList =() => {
                         < tr key={v.id}>
                             <td>{v.name}</td>
                             <td>{v.bankAccountNo}</td>
-                            <td>{bankName}</td>
+                            <td>{v.bankName}</td>
                             <td>
-                                <button className="action-btn delete-btn"onClick={() => deleteVendor(v,id)}>Delete</button>
+                                <button className="action-btn delete-btn"onClick={() => deleteVendor(v.id)}>Delete</button>
                             </td>
                             <td>
                             <button className="action-btn edit-btn" onClick={() => setSelectedVendor(v)}>Edit</button>

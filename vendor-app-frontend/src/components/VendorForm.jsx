@@ -35,12 +35,12 @@ const VenderForm =({selectedVendor,clearSelectedVendor}) => {
                 alert('Vendor Updated');
             }
             else{
-            await axios.post('http://localhost:500/api/vendors',vendor);
+            await axios.post('http://localhost:5000/api/vendors',vendor);
             alert('Vendor Created');
             }
             setVendor(initialForm);
             clearSelectedVendor();
-            window.location.reload();
+            // window.location.reload();
         } catch (err){
             console.error(err);
             alert('Error saving vendor')
