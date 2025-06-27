@@ -26,11 +26,13 @@ const Login = () => {
     <div className="login-wrapper">
       <div className="login-box">
         <h2>Login with Google</h2>
-
-        <GoogleLogin
-          onSuccess={handleLoginSuccess}
-          onError={handleLoginError}
-        />
+        <div className='google-button'>
+          <GoogleLogin
+            onSuccess={handleLoginSuccess}
+            onError={handleLoginError}
+          />
+        </div>
+        
       </div>
     </div>
   );

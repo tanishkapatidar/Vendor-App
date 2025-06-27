@@ -24,8 +24,9 @@ const Dashboard = () => {
             <div className="dashboard-header">
                 <h1>Vendor Management</h1>
                 <div className='user-info'>
-                <span>Welcome, {user.name}</span>
-                <button className="logout-btn" onClick={logout}>Logout</button>
+                    {user.picture && <img src={user.picture} alt="Profile" />}
+                    <span>Welcome, {user.name}</span>
+                    <button className="logout-btn" onClick={logout}>Logout</button>
                 </div>
             </div>
             <VendorForm

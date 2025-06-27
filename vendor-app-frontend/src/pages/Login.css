@@ -1,21 +1,29 @@
 .login-wrapper {
-background-color: #f8fafc;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+    border-color: black;
+    border-style: solid;
 }
-
 .login-box {
-background: white;
-padding: 40px;
-border-radius: 10px;
-box-shadow: 0 0 20px rgba(0,0,0,0.05);
-text-align: center;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    border-color: black;
+    border-style: solid;
 }
-
 .login-box h2 {
-margin-bottom: 20px;
-font-size: 24px;
-color: #1f2937;
+    margin-bottom: 1.5rem;
 }
+.google-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+  
+  
