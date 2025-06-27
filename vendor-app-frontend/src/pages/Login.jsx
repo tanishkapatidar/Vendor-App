@@ -1,26 +1,39 @@
-
-import React from 'react'
+import React from 'react';
 import './Login.css';
-
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
 
-    const handleLogin =() => {
+  const handleLoginSuccess = (credentialResponse) => {
+    const decoded = jwtDecode(credentialResponse.credential);
+    console.log('Google User:', decoded);
 
-        localStorage.setItem('user', JSON.stringify({name: 'Test User'}));
-        window.location.href='./dashboard';
+    localStorage.setItem('user', JSON.stringify({
+      name: decoded.name,
+      email: decoded.email,
+      picture: decoded.picture
+    }));
 
-    };
+    window.location.href = '/dashboard';
+  };
 
-    return (
-        <div className="login-wrapper">
-            <div className="login-box">
-                <h2>Login with Google</h2>
-                <button onClick={handleLogin}>Login</button>
-            </div>
-        </div>
+  const handleLoginError = () => {
+    alert('Google Login Failed');
+  };
 
-    );
+  return (
+    <div className="login-wrapper">
+      <div className="login-box">
+        <h2>Login with Google</h2>
+
+        <GoogleLogin
+          onSuccess={handleLoginSuccess}
+          onError={handleLoginError}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Login;

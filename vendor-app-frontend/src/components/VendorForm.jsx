@@ -19,6 +19,7 @@ const VenderForm =({selectedVendor,clearSelectedVendor}) => {
 
     useEffect(() => {
         if (selectedVendor){
+            console.log('selectedVendor changed:', selectedVendor);
             setVendor(selectedVendor);
         }
     },[selectedVendor]);
@@ -29,6 +30,7 @@ const VenderForm =({selectedVendor,clearSelectedVendor}) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+        console.log('Submitting vendor:', vendor);
         try{
             if(vendor.id){
                 await axios.put(`http://localhost:5000/api/vendors/${vendor.id}`,vendor);

@@ -4,7 +4,7 @@ import axios  from "axios";
 import './VendorList.css';
 
 
-const VendorList =() => {
+const VendorList =({setSelectedVendor}) => {
     const [vendors, setVendors] = useState([]);
     const [page, setPage]= useState(1);
 
